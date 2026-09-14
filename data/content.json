@@ -1,0 +1,34 @@
+{
+  "hero_video": "website.mp4",
+  "about_image": "machines/M2.png",
+  "portfolio_machines": {
+    "cover": "machines/M.png",
+    "images": [
+      "machines/M.png",
+      "machines/M2.png"
+    ]
+  },
+  "portfolio_food": {
+    "cover": "food and fmcg/F.png",
+    "images": [
+      "food and fmcg/F.png",
+      "food and fmcg/F1.png",
+      "food and fmcg/F2.png",
+      "food and fmcg/F3.png",
+      "food and fmcg/F4.png",
+      "food and fmcg/F5.png",
+      "food and fmcg/F6.png",
+      "food and fmcg/F7.png",
+      "food and fmcg/F8.png",
+      "food and fmcg/F9.png"
+    ]
+  },
+  "portfolio_corporate": {
+    "cover": "coorporate/C.png",
+    "images": [
+      "coorporate/C.png",
+      "coorporate/C2.png",
+      "coorporate/C3.png"
+    ]
+  }
+}

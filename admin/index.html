@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClairVibe Visual Studio — Website Builder</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ═══════════ TOP STUDIO NAVBAR ═══════════ -->
+  <header class="studio-navbar">
+    <div class="brand-block">
+      <a href="../index.html" class="brand-title" target="_blank" title="View live website">
+        CLAIR<span>VIBE</span>
+      </a>
+      <span class="builder-badge">Visual Studio</span>
+    </div>
+
+    <!-- View Mode Switcher (Hostinger Style) -->
+    <div class="view-modes">
+      <button class="view-btn active" data-mode="split" title="Side-by-side Editor and Live Preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+        <span>Split Studio</span>
+      </button>
+      <button class="view-btn" data-mode="editor-only" title="Full Width Editor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+        <span>Editor Only</span>
+      </button>
+      <button class="view-btn" data-mode="preview-only" title="Full Screen Live Preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        <span>Live Canvas</span>
+      </button>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="nav-actions">
+      <div class="github-chip" id="githubStatusChip" title="Configure GitHub personal access token for 1-click publishing">
+        <span class="status-dot"></span>
+        <span class="status-text">Connect GitHub</span>
+      </div>
+
+      <a href="../index.html" target="_blank" class="btn btn-ghost" title="Open live site in new tab">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Live Site
+      </a>
+
+      <button class="btn btn-secondary" id="btnExport" title="Export content.json backup">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Backup
+      </button>
+
+      <button class="btn btn-primary" id="btnPublish" title="Save changes directly to GitHub repository">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        Publish to Website
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════ MAIN STUDIO WORKSPACE ═══════════ -->
+  <div class="studio-workspace">
+
+    <!-- 1. LEFT SIDEBAR CATEGORIES -->
+    <aside class="studio-sidebar">
+      <div class="section-label">Page Sections</div>
+
+      <div class="sidebar-tab active" data-tab="hero">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Hero & Video</span>
+      </div>
+
+      <div class="section-label" style="display:flex;align-items:center;justify-content:space-between">
+        <span>Galleries</span>
+        <button class="btn-ghost btn-sm" id="btnOpenAddCategoryModal" style="padding:0.15rem 0.5rem;font-size:0.7rem;color:var(--amber);border-color:rgba(245,166,35,0.3);cursor:pointer" title="Create a new portfolio section">
+          + ADD
+        </button>
+      </div>
+
+      <!-- Dynamic Portfolio Category Tabs in Sidebar -->
+      <div id="sidebarGalleryTabs" style="display:flex;flex-direction:column;gap:0.3rem"></div>
+
+      <div class="section-label">Story & Branding</div>
+
+      <div class="sidebar-tab" data-tab="about">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>About & Who We Are</span>
+      </div>
+
+      <div class="sidebar-tab" data-tab="colors">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0 7 7c0 2-1 3-2 4s-1 2-1 3a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2c0-1 0-2-1-3s-2-2-2-4a7 7 0 0 0 7-7z"/><circle cx="12" cy="12" r="2"/></svg>
+        <span>Colors & Gradients</span>
+      </div>
+
+      <div class="sidebar-tab" data-tab="contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.11 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c1.21.34 2 .57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Contact & Socials</span>
+      </div>
+    </aside>
+
+    <!-- 2. CENTER EDITING FORM PANE -->
+    <main class="studio-editor-pane">
+
+      <!-- ─── TAB: HERO ─── -->
+      <section class="tab-content active" id="tab_hero">
+        <div class="content-header">
+          <h2 class="content-title">Hero Video & Main Banner</h2>
+          <p class="content-subtitle">Change the fullscreen video background and call-to-action button.</p>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Background Video</span>
+          </div>
+
+          <div class="visual-image-card">
+            <div class="image-preview-box" style="height:200px">
+              <video id="heroVideoPreview" autoplay muted loop playsinline></video>
+              <div class="image-hover-actions">
+                <button class="action-btn-pill pill-replace" id="btnReplaceHeroVideo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  Replace Video
+                </button>
+              </div>
+            </div>
+            <div class="image-meta-bar">
+              <span>Homepage Video</span>
+              <span style="color:var(--amber);font-weight:600">BACKGROUND</span>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top:1rem">
+            <label class="form-label">Video URL or File Path</label>
+            <input type="text" class="form-input" id="heroVideoInput" placeholder="website.mp4">
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Action Button</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Button Text</label>
+            <input type="text" class="form-input" id="heroBtnTextInput" placeholder="Start Your Event">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Button Link</label>
+            <input type="text" class="form-input" id="heroBtnLinkInput" placeholder="#contact">
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── DYNAMIC PORTFOLIO CATEGORY PANELS ─── -->
+      <div id="dynamicCategoryPanels"></div>
+
+      <!-- ─── TAB: ABOUT ─── -->
+      <section class="tab-content" id="tab_about">
+        <div class="content-header">
+          <h2 class="content-title">About & Brand Story</h2>
+          <p class="content-subtitle">Edit the company story, live stats counters, and featured visual.</p>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Story & Headlines</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sub-Label</label>
+            <input type="text" class="form-input" id="aboutLabelInput" placeholder="Who We Are">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Main Heading</label>
+            <input type="text" class="form-input" id="aboutTitleInput" placeholder="We Design Moments That Last a Lifetime">
+          </div>
+          <div class="form-group">
+            <label class="form-label">First Paragraph</label>
+            <textarea class="form-textarea" id="aboutP1Input"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Second Paragraph</label>
+            <textarea class="form-textarea" id="aboutP2Input"></textarea>
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Stats Counters</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem">
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Stat #1 Count</label>
+              <input type="number" class="form-input" id="statCount_0">
+            </div>
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Stat #1 Label</label>
+              <input type="text" class="form-input" id="statLabel_0">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem">
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Stat #2 Count</label>
+              <input type="number" class="form-input" id="statCount_1">
+            </div>
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Stat #2 Label</label>
+              <input type="text" class="form-input" id="statLabel_1">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Stat #3 Count</label>
+              <input type="number" class="form-input" id="statCount_2">
+            </div>
+            <div class="form-group" style="margin:0">
+              <label class="form-label">Stat #3 Label</label>
+              <input type="text" class="form-input" id="statLabel_2">
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Featured About Photo</span>
+          </div>
+          <div id="aboutImageSlot"></div>
+        </div>
+      </section>
+
+      <!-- ─── TAB: CONTACT ─── -->
+      <section class="tab-content" id="tab_contact">
+        <div class="content-header">
+          <h2 class="content-title">Contact & Socials</h2>
+          <p class="content-subtitle">Manage public business details and social media links.</p>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Contact Information</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="contactEmailInput" placeholder="hello@clairvibe.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-input" id="contactPhoneInput" placeholder="+91 98765 43210">
+          </div>
+          <div class="form-group">
+            <label class="form-label">City / Address</label>
+            <input type="text" class="form-input" id="contactLocationInput" placeholder="Mumbai, India">
+          </div>
+        </div>
+
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Social Links & Footer</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Instagram URL</label>
+            <input type="text" class="form-input" id="contactInstaInput" placeholder="https://instagram.com/clairvibe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Facebook URL</label>
+            <input type="text" class="form-input" id="contactFbInput" placeholder="https://facebook.com/clairvibe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">LinkedIn URL</label>
+            <input type="text" class="form-input" id="contactLiInput" placeholder="https://linkedin.com/company/clairvibe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Footer Copyright</label>
+            <input type="text" class="form-input" id="contactFooterInput" placeholder="© 2026 ClairVibe. All rights reserved.">
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── TAB: COLORS & GRADIENTS ─── -->
+      <section class="tab-content" id="tab_colors">
+        <div class="content-header">
+          <h2 class="content-title">Color Palette & Gradient Studio</h2>
+          <p class="content-subtitle">Customize brand colors, sheet backgrounds, and gradients with live canvas preview.</p>
+        </div>
+
+        <!-- 1. Luxury One-Click Presets -->
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Preset Luxury Palettes (1-Click)</span>
+          </div>
+          <div class="theme-presets-grid" id="themePresetsGrid">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- 2. Granular Color Customizer -->
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Primary Brand & Accent Colors</span>
+          </div>
+
+          <div class="color-picker-grid">
+            <!-- Primary Accent -->
+            <div class="color-picker-item">
+              <div class="color-picker-header">
+                <span class="color-picker-label">Primary Accent</span>
+              </div>
+              <div class="color-input-wrapper">
+                <div class="color-swatch-box">
+                  <input type="color" id="picker_primary_accent">
+                  <div class="color-swatch-preview" id="swatch_primary_accent"></div>
+                </div>
+                <input type="text" class="color-hex-field" id="hex_primary_accent" placeholder="#F5A623">
+              </div>
+            </div>
+
+            <!-- Secondary / Highlight Accent -->
+            <div class="color-picker-item">
+              <div class="color-picker-header">
+                <span class="color-picker-label">Accent Highlight</span>
+              </div>
+              <div class="color-input-wrapper">
+                <div class="color-swatch-box">
+                  <input type="color" id="picker_secondary_accent">
+                  <div class="color-swatch-preview" id="swatch_secondary_accent"></div>
+                </div>
+                <input type="text" class="color-hex-field" id="hex_secondary_accent" placeholder="#FFC857">
+              </div>
+            </div>
+
+            <!-- Deep Navy Base -->
+            <div class="color-picker-item">
+              <div class="color-picker-header">
+                <span class="color-picker-label">Base Dark / Hero Bg</span>
+              </div>
+              <div class="color-input-wrapper">
+                <div class="color-swatch-box">
+                  <input type="color" id="picker_navy_deep">
+                  <div class="color-swatch-preview" id="swatch_navy_deep"></div>
+                </div>
+                <input type="text" class="color-hex-field" id="hex_navy_deep" placeholder="#06061A">
+              </div>
+            </div>
+
+            <!-- Main Navy Surface -->
+            <div class="color-picker-item">
+              <div class="color-picker-header">
+                <span class="color-picker-label">Main Navy / Headings</span>
+              </div>
+              <div class="color-input-wrapper">
+                <div class="color-swatch-box">
+                  <input type="color" id="picker_navy_main">
+                  <div class="color-swatch-preview" id="swatch_navy_main"></div>
+                </div>
+                <input type="text" class="color-hex-field" id="hex_navy_main" placeholder="#0B0B2B">
+              </div>
+            </div>
+
+            <!-- Sheet / Page Light Background -->
+            <div class="color-picker-item">
+              <div class="color-picker-header">
+                <span class="color-picker-label">Page Sheet Color</span>
+              </div>
+              <div class="color-input-wrapper">
+                <div class="color-swatch-box">
+                  <input type="color" id="picker_sheet_bg">
+                  <div class="color-swatch-preview" id="swatch_sheet_bg"></div>
+                </div>
+                <input type="text" class="color-hex-field" id="hex_sheet_bg" placeholder="#FFFFFF">
+              </div>
+            </div>
+
+            <!-- Section / Card Background -->
+            <div class="color-picker-item">
+              <div class="color-picker-header">
+                <span class="color-picker-label">Section Off-White</span>
+              </div>
+              <div class="color-input-wrapper">
+                <div class="color-swatch-box">
+                  <input type="color" id="picker_section_bg">
+                  <div class="color-swatch-preview" id="swatch_section_bg"></div>
+                </div>
+                <input type="text" class="color-hex-field" id="hex_section_bg" placeholder="#F7F5F2">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Gradient Generator -->
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Button & Accent Gradient Generator</span>
+          </div>
+
+          <div class="gradient-builder-card">
+            <!-- Live Preview Bar -->
+            <div class="gradient-live-bar" id="gradLiveBar">
+              <span>START YOUR EVENT</span>
+            </div>
+
+            <div class="gradient-controls-grid">
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Gradient Start Color</label>
+                <div class="color-input-wrapper">
+                  <div class="color-swatch-box">
+                    <input type="color" id="picker_grad_start">
+                    <div class="color-swatch-preview" id="swatch_grad_start"></div>
+                  </div>
+                  <input type="text" class="color-hex-field" id="hex_grad_start" placeholder="#F5A623">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Gradient End Color</label>
+                <div class="color-input-wrapper">
+                  <div class="color-swatch-box">
+                    <input type="color" id="picker_grad_end">
+                    <div class="color-swatch-preview" id="swatch_grad_end"></div>
+                  </div>
+                  <input type="text" class="color-hex-field" id="hex_grad_end" placeholder="#FFC857">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin:0">
+                <label class="form-label">Gradient Angle</label>
+                <select class="form-input" id="select_grad_angle">
+                  <option value="45deg">45° (Diagonal Up)</option>
+                  <option value="90deg">90° (Left to Right)</option>
+                  <option value="135deg" selected>135° (Diagonal Down)</option>
+                  <option value="180deg">180° (Top to Bottom)</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:0.5rem">
+              <label class="form-label">Quick Gradient Presets</label>
+              <div class="gradient-preset-pills">
+                <button class="grad-pill" data-gstart="#F5A623" data-gend="#FFC857" data-gangle="135deg">✨ Gold Sunset</button>
+                <button class="grad-pill" data-gstart="#00D2FF" data-gend="#3A7BD5" data-gangle="135deg">💎 Electric Cyan</button>
+                <button class="grad-pill" data-gstart="#10B981" data-gend="#34D399" data-gangle="135deg">🌿 Emerald Luxury</button>
+                <button class="grad-pill" data-gstart="#E0A899" data-gend="#F7D6CC" data-gangle="135deg">🌸 Rose Gold</button>
+                <button class="grad-pill" data-gstart="#8B5CF6" data-gend="#C084FC" data-gangle="135deg">🔮 Royal Purple</button>
+                <button class="grad-pill" data-gstart="#EF4444" data-gend="#F87171" data-gangle="135deg">🔥 Ruby Glow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Hero Video Overlay Gradient -->
+        <div class="editor-card">
+          <div class="card-heading">
+            <span>Hero Video Background Overlay Gradient</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Overlay Gradient Style</label>
+            <select class="form-input" id="select_hero_overlay">
+              <option value="linear-gradient(180deg, rgba(6,6,26,.4) 0%, rgba(6,6,26,.05) 35%, rgba(6,6,26,.05) 65%, rgba(6,6,26,.5) 100%)">Cinema Vignette (Soft Top/Bottom Darkening)</option>
+              <option value="linear-gradient(180deg, rgba(6,6,26,.7) 0%, rgba(6,6,26,.3) 50%, rgba(6,6,26,.8) 100%)">Deep Dramatic (High Contrast)</option>
+              <option value="linear-gradient(135deg, rgba(11,11,43,.6) 0%, rgba(245,166,35,.15) 100%)">Amber Tinted (Warm Golden Glow)</option>
+              <option value="linear-gradient(180deg, transparent 0%, rgba(6,6,26,.8) 100%)">Bottom Fade Only</option>
+              <option value="rgba(6,6,26,.3)">Flat Subtle Tint (30% Dark)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Hero Button Text Color</label>
+            <div class="color-input-wrapper" style="max-width:260px">
+              <div class="color-swatch-box">
+                <input type="color" id="picker_hero_btn_text">
+                <div class="color-swatch-preview" id="swatch_hero_btn_text"></div>
+              </div>
+              <input type="text" class="color-hex-field" id="hex_hero_btn_text" placeholder="#06061A">
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 3. RIGHT LIVE CANVAS PREVIEW PANE (HOSTINGER STYLE) -->
+    <section class="studio-preview-pane">
+      <div class="preview-toolbar">
+        <div class="preview-device-toggle">
+          <span>Device:</span>
+          <button class="device-btn active" data-device="desktop" title="Desktop view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </button>
+          <button class="device-btn" data-device="tablet" title="Tablet view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </button>
+          <button class="device-btn" data-device="mobile" title="Mobile view">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </button>
+        </div>
+        <div>
+          <span>✨ Live Canvas Sync Active</span>
+        </div>
+      </div>
+
+      <div class="preview-iframe-wrapper" id="previewIframeWrapper">
+        <iframe id="liveCanvasIframe" src="../index.html"></iframe>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ═══════════ VISUAL IMAGE REPLACEMENT MODAL ═══════════ -->
+  <div class="modal-overlay" id="replaceModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="replaceModalTitle">Replace Media</h3>
+        <button class="modal-close" id="replaceModalClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-comparison-grid">
+          <!-- Current Media -->
+          <div class="comparison-col">
+            <div class="comparison-col-header">
+              <span>Current Image</span>
+              <span style="color:var(--white-40)">BEFORE</span>
+            </div>
+            <div class="comparison-thumb">
+              <img id="replaceCurrentThumb" src="" alt="Current image">
+            </div>
+          </div>
+
+          <!-- New Selected Media Preview -->
+          <div class="comparison-col">
+            <div class="comparison-col-header">
+              <span>New Replacement</span>
+              <span style="color:var(--green)">AFTER</span>
+            </div>
+            <div class="comparison-thumb">
+              <img id="replaceNewThumb" src="" alt="New image preview" style="display:none">
+              <div class="comparison-thumb empty-thumb" id="replaceNewPlaceholder">
+                <span>Select or drop a new file below to preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-dropzone">
+          <input type="file" id="modalFileInput">
+          <div style="font-weight:600;font-size:0.85rem">Click or Drop Replacement File</div>
+          <div style="font-size:0.72rem;color:var(--white-40)">JPG, PNG, WebP or MP4</div>
+        </div>
+
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Or Custom File Path / URL</label>
+          <input type="text" class="form-input" id="modalPathInput" placeholder="machines/M.png or https://...">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btnCancelReplace">Cancel</button>
+        <button class="btn btn-primary" id="btnConfirmReplace" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Confirm Replacement
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ VISUAL DELETE PHOTO CONFIRMATION MODAL ═══════════ -->
+  <div class="modal-overlay" id="deleteModal">
+    <div class="modal-card" style="max-width:440px">
+      <div class="modal-header">
+        <h3 class="modal-title" id="deleteModalTitle">Remove Photo</h3>
+        <button class="modal-close" id="deleteModalClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body" style="text-align:center">
+        <p style="font-size:0.85rem;color:var(--white-70);margin-bottom:0.5rem">Are you sure you want to remove this photo from the gallery?</p>
+        
+        <div style="width:100%;height:180px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--navy-border);background:#000;margin:0 auto">
+          <img id="deleteModalThumb" src="" alt="Photo to delete" style="width:100%;height:100%;object-fit:cover">
+        </div>
+
+        <div style="font-size:0.75rem;color:var(--white-40);margin-top:0.5rem" id="deleteModalFilename"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btnCancelDelete">Cancel</button>
+        <button class="btn btn-danger" id="btnConfirmDelete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Remove Photo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ CREATE NEW CATEGORY MODAL ═══════════ -->
+  <div class="modal-overlay" id="createCategoryModal">
+    <div class="modal-card" style="max-width:520px">
+      <div class="modal-header">
+        <h3 class="modal-title">+ Add New Portfolio Section</h3>
+        <button class="modal-close" id="createCategoryModalClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Section Title *</label>
+          <input type="text" class="form-input" id="newCatTitleInput" placeholder="e.g. Luxury Weddings & Galas">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Card Cover Image *</label>
+          <div class="modal-dropzone">
+            <input type="file" accept="image/*" id="newCatCoverInput">
+            <div id="newCatCoverText" style="font-weight:600;font-size:0.85rem">Click or Drop Card Cover Photo</div>
+            <div style="font-size:0.72rem;color:var(--white-40)">JPG, PNG, WebP</div>
+          </div>
+          <div id="newCatCoverPreviewBox" style="display:none;width:100%;height:130px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--navy-border);margin-top:0.5rem;background:#000">
+            <img id="newCatCoverPreviewImg" src="" style="width:100%;height:100%;object-fit:cover">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Popup Gallery Photos (Optional)</label>
+          <div class="modal-dropzone">
+            <input type="file" multiple accept="image/*" id="newCatPhotosInput">
+            <div id="newCatPhotosText" style="font-weight:600;font-size:0.85rem">Select or Drop Initial Photos</div>
+            <div style="font-size:0.72rem;color:var(--white-40)">You can upload multiple files at once</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btnCancelCreateCat">Cancel</button>
+        <button class="btn btn-primary" id="btnConfirmCreateCat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Create Section
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ DELETE ENTIRE CATEGORY MODAL ═══════════ -->
+  <div class="modal-overlay" id="deleteCategoryModal">
+    <div class="modal-card" style="max-width:460px">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color:var(--red)">Delete Entire Section</h3>
+        <button class="modal-close" id="deleteCategoryModalClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body" style="text-align:center">
+        <p style="font-size:0.88rem;color:var(--white-70);margin-bottom:0.75rem">
+          Are you sure you want to permanently delete this portfolio section and all its gallery photos?
+        </p>
+
+        <div style="background:var(--navy-800);border:1px solid var(--navy-border);border-radius:var(--radius-sm);padding:0.85rem;display:flex;align-items:center;gap:0.75rem;text-align:left">
+          <div style="width:70px;height:55px;border-radius:var(--radius-xs);overflow:hidden;background:#000;flex-shrink:0">
+            <img id="delCatThumb" src="" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div>
+            <div id="delCatTitle" style="font-weight:700;font-size:0.95rem;color:var(--white)"></div>
+            <div id="delCatCount" style="font-size:0.75rem;color:var(--amber);margin-top:0.15rem"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btnCancelDeleteCat">Cancel</button>
+        <button class="btn btn-danger" id="btnConfirmDeleteCat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Delete Entire Section
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ GITHUB TOKEN SETUP MODAL ═══════════ -->
+  <div class="modal-overlay" id="tokenModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">GitHub 1-Click Publishing Setup</h3>
+        <button class="modal-close" id="tokenModalClose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size:0.85rem;color:var(--white-70)">
+          Connect your GitHub Personal Access Token to publish edits directly to your repository (<code>websitebuilder7777-bit/clairvibe</code>) with 1 click.
+        </p>
+
+        <div class="form-group" style="margin-top:0.5rem">
+          <label class="form-label">GitHub Personal Access Token (classic)</label>
+          <input type="password" class="form-input" id="inputGithubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        </div>
+
+        <div style="background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.25);padding:0.75rem 1rem;border-radius:var(--radius-sm);font-size:0.8rem;color:var(--amber-light)">
+          💡 <strong>How to get a token:</strong> Go to <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--amber);text-decoration:underline">GitHub Settings &gt; Developer settings &gt; Personal access tokens</a>, generate a classic token with the <code>repo</code> checkbox ticked, and paste it here.
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" id="btnSaveToken">Save & Connect</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Studio Scripts -->
+  <script src="admin.js"></script>
+</body>
+</html>

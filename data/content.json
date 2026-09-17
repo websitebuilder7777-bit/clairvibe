@@ -1,0 +1,97 @@
+{
+  "theme": {
+    "primary_accent": "#F5A623",
+    "secondary_accent": "#FFC857",
+    "navy_deep": "#06061A",
+    "navy_main": "#0B0B2B",
+    "navy_mid": "#141438",
+    "sheet_bg": "#FFFFFF",
+    "section_bg": "#F7F5F2",
+    "btn_gradient": "linear-gradient(135deg, #F5A623 0%, #FFC857 100%)",
+    "hero_overlay": "linear-gradient(180deg, rgba(6,6,26,.4) 0%, rgba(6,6,26,.05) 35%, rgba(6,6,26,.05) 65%, rgba(6,6,26,.5) 100%)",
+    "hero_btn_text": "#06061A"
+  },
+  "hero": {
+    "video": "website.mp4",
+    "button_text": "Start Your Event",
+    "button_link": "#contact"
+  },
+  "portfolio": {
+    "header_label": "Our Portfolio",
+    "header_title": "Crafted With Passion",
+    "header_desc": "A glimpse into the experiences we've brought to life — every detail, every emotion, every moment.",
+    "categories": [
+      {
+        "id": "machines",
+        "title": "Heavy Machinery & Stage Rigs",
+        "cover": "machines/M.png",
+        "images": [
+          "machines/M.png",
+          "machines/M2.png"
+        ]
+      },
+      {
+        "id": "food",
+        "title": "Food & FMCG",
+        "cover": "food and fmcg/F.png",
+        "images": [
+          "food and fmcg/F.png",
+          "food and fmcg/F1.png",
+          "food and fmcg/F2.png",
+          "food and fmcg/F3.png",
+          "food and fmcg/F4.png",
+          "food and fmcg/F5.png",
+          "food and fmcg/F6.png",
+          "food and fmcg/F7.png",
+          "food and fmcg/F8.png",
+          "food and fmcg/F9.png"
+        ]
+      },
+      {
+        "id": "corporate",
+        "title": "Corporate & Brand Summits",
+        "cover": "coorporate/C.png",
+        "images": [
+          "coorporate/C.png",
+          "coorporate/C2.png",
+          "coorporate/C3.png"
+        ]
+      }
+    ]
+  },
+  "about": {
+    "label": "Who We Are",
+    "title": "We Design Moments That Last a Lifetime",
+    "paragraph1": "ClairVibe is a full-service event management company setting the standard for premium experiential design. From concept to execution, we bring together creativity, strategy, and flawless logistics to craft events that leave lasting impressions.",
+    "paragraph2": "Our team of seasoned creatives, planners, and producers work in harmony to bring your unique story to life — no matter the scale.",
+    "image": "machines/M2.png",
+    "stats": [
+      {
+        "count": 150,
+        "label": "Events Delivered"
+      },
+      {
+        "count": 50,
+        "label": "Happy Clients"
+      },
+      {
+        "count": 8,
+        "label": "Years of Craft"
+      }
+    ]
+  },
+  "contact": {
+    "label": "Get In Touch",
+    "title": "Let's Create Something Remarkable",
+    "description": "Ready to start planning your next event? Reach out and let's bring your vision to life.",
+    "email": "hello@clairvibe.com",
+    "phone": "+91 98765 43210",
+    "location": "Mumbai, India",
+    "socials": {
+      "instagram": "#",
+      "facebook": "#",
+      "linkedin": "#"
+    },
+    "footer_copy": "© 2026 ClairVibe. All rights reserved."
+  }
+}

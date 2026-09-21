@@ -59,12 +59,8 @@
           {
             "id": "kolkata_foodtech",
             "title": "Kolkata Foodtech",
-            "cover": "uploads/1790013469294_c.png",
-            "images": [
-              "uploads/kolkata_foodtech_1790013477013_c.png",
-              "uploads/kolkata_foodtech_1790013477035_c2.png",
-              "uploads/kolkata_foodtech_1790013477074_c3.png"
-            ]
+            "cover": "uploads/1790013614238_c.png",
+            "images": []
           }
         ]
       }

@@ -51,16 +51,6 @@
         "images": []
       },
       {
-        "id": "corporate",
-        "title": "Corporate & Brand Summits",
-        "cover": "coorporate/C.png",
-        "images": [
-          "coorporate/C.png",
-          "coorporate/C2.png",
-          "coorporate/C3.png"
-        ]
-      },
-      {
         "id": "event_marketing",
         "title": "Event Marketing",
         "cover": "",

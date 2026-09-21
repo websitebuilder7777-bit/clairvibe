@@ -22,17 +22,14 @@
     "header_desc": "A glimpse into the experiences we've brought to life — every detail, every emotion, every moment.",
     "categories": [
       {
-        "id": "machines",
-        "title": "Heavy Machinery & Stage Rigs",
-        "cover": "machines/M.png",
-        "images": [
-          "machines/M.png",
-          "machines/M2.png"
-        ]
+        "id": "influencer",
+        "title": "Influencer Video Shoot",
+        "cover": "",
+        "images": []
       },
       {
         "id": "food",
-        "title": "Food & FMCG",
+        "title": "Food and Product Photography",
         "cover": "food and fmcg/F.png",
         "images": [
           "food and fmcg/F.png",
@@ -48,6 +45,12 @@
         ]
       },
       {
+        "id": "registration",
+        "title": "Registration Software",
+        "cover": "",
+        "images": []
+      },
+      {
         "id": "corporate",
         "title": "Corporate & Brand Summits",
         "cover": "coorporate/C.png",
@@ -55,6 +58,20 @@
           "coorporate/C.png",
           "coorporate/C2.png",
           "coorporate/C3.png"
+        ]
+      },
+      {
+        "id": "event_marketing",
+        "title": "Event Marketing",
+        "cover": "",
+        "images": [],
+        "subsections": [
+          {
+            "id": "kolkata_foodtech",
+            "title": "Kolkata Foodtech",
+            "cover": "",
+            "images": []
+          }
         ]
       }
     ]
@@ -64,7 +81,7 @@
     "title": "We Design Moments That Last a Lifetime",
     "paragraph1": "ClairVibe is a full-service event management company setting the standard for premium experiential design. From concept to execution, we bring together creativity, strategy, and flawless logistics to craft events that leave lasting impressions.",
     "paragraph2": "Our team of seasoned creatives, planners, and producers work in harmony to bring your unique story to life — no matter the scale.",
-    "image": "machines/M2.png",
+    "image": "coorporate/C.png",
     "stats": [
       {
         "count": 150,
@@ -85,7 +102,7 @@
     "title": "Let's Create Something Remarkable",
     "description": "Ready to start planning your next event? Reach out and let's bring your vision to life.",
     "email": "hello@clairvibe.com",
-    "phone": "+91 98765 43210",
+    "phone": "+91 6290902501",
     "location": "Mumbai, India",
     "socials": {
       "instagram": "#",
